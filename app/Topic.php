@@ -27,4 +27,19 @@ class Topic extends Model
     {
         return $this->hasMany(Question::class, 'topic_id')->withTrashed();
     }
+
+    public function options()
+    {
+        return $this->hasManyThrough(QuestionsOption::class, Question::class);
+    }
+
+    public function getMaxPointsAttribute()
+    {
+        return $this->options->sum('points');
+    }
+
+    public function getTotalQuestionAttribute()
+    {
+        return $this->questions()->count();
+    }
 }

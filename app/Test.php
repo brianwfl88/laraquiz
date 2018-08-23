@@ -27,4 +27,19 @@ class Test extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function options()
+    {
+        return $this->hasManyThrough(QuestionsOption::class, TestAnswer::class, 'test_id', 'id');
+    }
+
+    public function topic()
+    {
+        return $this->belongsTo(Topic::class);
+    }
+
+    public function getResultOverAttribute()
+    {
+        return $this->result .'/'. $this->topic->max_points;
+    }
 }

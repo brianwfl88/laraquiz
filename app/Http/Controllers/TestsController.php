@@ -21,9 +21,19 @@ class TestsController extends Controller
      */
     public function index()
     {
+        $topics = Topic::with('questions', 'options')->has('questions')
+            ->has('options')
+          ->get();
+
+        return view('tests.index', compact('topics'));
+    }
+
+    public function show($id)
+    {
         // $topics = Topic::inRandomOrder()->limit(10)->get();
 
-        $questions = Question::inRandomOrder()->limit(10)->get();
+        $questions = Question::with('options')->where('topic_id', $id)->get();
+
         foreach ($questions as &$question) {
             $question->options = QuestionsOption::where('question_id', $question->id)->inRandomOrder()->get();
         }
@@ -38,7 +48,7 @@ class TestsController extends Controller
         }
         */
 
-        return view('tests.create', compact('questions'));
+        return count($questions) ? view('tests.create', compact('questions')) : redirect()->route('tests.index');
     }
 
     /**
@@ -57,20 +67,16 @@ class TestsController extends Controller
         ]);
 
         foreach ($request->input('questions', []) as $key => $question) {
-            $status = 0;
+            $points = QuestionsOption::find($request->input('answers.' . $question))->points;
 
-            if ($request->input('answers.'.$question) != null
-                && QuestionsOption::find($request->input('answers.'.$question))->correct
-            ) {
-                $status = 1;
-                $result++;
-            }
+            $result += $points;
+
             TestAnswer::create([
                 'user_id'     => Auth::id(),
                 'test_id'     => $test->id,
                 'question_id' => $question,
                 'option_id'   => $request->input('answers.'.$question),
-                'correct'     => $status,
+                'points'     => $points,
             ]);
         }
 

@@ -58,18 +58,19 @@ class QuestionsController extends Controller
     public function store(StoreQuestionsRequest $request)
     {
 
+        $options = $request->options;
+        $question_options = [];
+
+        foreach ($options as $key => $option) {
+            $options[$key] = array_filter($option);
+
+            if(!empty($options[$key]))
+                $question_options[] = QuestionsOption::create($options[$key]);
+        }
+
         $question = Question::create($request->all());
 
-        foreach ($request->input() as $key => $value) {
-            if(strpos($key, 'option') !== false && $value != '') {
-                $status = $request->input('correct') == $key ? 1 : 0;
-                QuestionsOption::create([
-                    'question_id' => $question->id,
-                    'option'      => $value,
-                    'correct'     => $status
-                ]);
-            }
-        }
+        $question->options()->saveMany($question_options);
 
         return redirect()->route('questions.index');
     }

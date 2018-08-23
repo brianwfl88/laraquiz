@@ -34,7 +34,93 @@
                     @endif
                 </div>
             </div>
-            <div class="row">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th colspan="2">
+                            Options
+                        </th>
+                        <th width="120">
+                            Score
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td width="1">#1</td>
+                        <td>
+                            {!! Form::text('options[1][option]', old('options[1][option]'), ['class' => 'form-control ', 'placeholder' => '']) !!}
+                                @if($errors->has('options[1][option]'))
+                                    <p class="help-block">
+                                        {{ $errors->first('options[1][option]') }}
+                                    </p>
+                                @endif
+                        </td>
+                        <td>
+                            {!! Form::number('options[1][points]', old('options[1][points]'), ['class' => 'form-control ', 'placeholder' => '']) !!}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="1">#2</td>
+                        <td>
+                            {!! Form::text('options[2][option]', old('options[2][option]'), ['class' => 'form-control ', 'placeholder' => '']) !!}
+                                @if($errors->has('options[2][option]'))
+                                    <p class="help-block">
+                                        {{ $errors->first('options[2][option]') }}
+                                    </p>
+                                @endif
+                        </td>
+                        <td>
+                            {!! Form::number('options[2][points]', old('options[2][points]'), ['class' => 'form-control ', 'placeholder' => '']) !!}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="1">#3</td>
+                        <td>
+                            {!! Form::text('options[3][option]', old('options[3][option]'), ['class' => 'form-control ', 'placeholder' => '']) !!}
+                                @if($errors->has('options[3][option]'))
+                                    <p class="help-block">
+                                        {{ $errors->first('options[3][option]') }}
+                                    </p>
+                                @endif
+                        </td>
+                        <td>
+                            {!! Form::number('options[3][points]', old('options[3][points]'), ['class' => 'form-control ', 'placeholder' => '']) !!}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="1">#4</td>
+                        <td>
+                            {!! Form::text('options[4][option]', old('options[4][option]'), ['class' => 'form-control ', 'placeholder' => '']) !!}
+                                @if($errors->has('options[4][option]'))
+                                    <p class="help-block">
+                                        {{ $errors->first('options[4][option]') }}
+                                    </p>
+                                @endif
+                        </td>
+                        <td>
+                            {!! Form::number('options[4][points]', old('options[4][points]'), ['class' => 'form-control ', 'placeholder' => '']) !!}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="1">#5</td>
+                        <td>
+                            {!! Form::text('options[5][option]', old('options[5][option]'), ['class' => 'form-control ', 'placeholder' => '']) !!}
+                                @if($errors->has('options[5][option]'))
+                                    <p class="help-block">
+                                        {{ $errors->first('options[5][option]') }}
+                                    </p>
+                                @endif
+                        </td>
+                        <td>
+                            {!! Form::number('options[5][points]', old('options[5][points]'), ['class' => 'form-control ', 'placeholder' => '']) !!}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            {{-- <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('option1', 'Option #1', ['class' => 'control-label']) !!}
                     {!! Form::text('option1', old('option1'), ['class' => 'form-control ', 'placeholder' => '']) !!}
@@ -93,7 +179,7 @@
                         </p>
                     @endif
                 </div>
-            </div>
+            </div> --}}
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('correct', 'Correct', ['class' => 'control-label']) !!}

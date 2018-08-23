@@ -25,6 +25,7 @@ class StoreQuestionsOptionsRequest extends FormRequest
         return [
             'question_id' => 'required',
             'option' => 'required',
+            'points' => 'required|numeric',
         ];
     }
 }

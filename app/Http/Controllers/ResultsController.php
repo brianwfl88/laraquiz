@@ -23,7 +23,7 @@ class ResultsController extends Controller
      */
     public function index()
     {
-        $results = Test::all()->load('user');
+        $results = Test::all()->load('user', 'options', 'topic');
 
         if (!Auth::user()->isAdmin()) {
             $results = $results->where('user_id', '=', Auth::id());

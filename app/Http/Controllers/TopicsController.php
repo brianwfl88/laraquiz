@@ -21,7 +21,7 @@ class TopicsController extends Controller
      */
     public function index()
     {
-        $topics = Topic::all();
+        $topics = Topic::with('options')->get();
 
         return view('topics.index', compact('topics'));
     }

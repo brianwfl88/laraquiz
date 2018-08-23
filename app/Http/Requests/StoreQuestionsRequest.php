@@ -26,6 +26,7 @@ class StoreQuestionsRequest extends FormRequest
             'topic_id'           => 'required',
             'question_text'      => 'required',
             'answer_explanation' => 'required',
+            'options'            => 'required|array'
         ];
     }
 }

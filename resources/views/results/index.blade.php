@@ -16,6 +16,7 @@
                         <th>@lang('quickadmin.results.fields.user')</th>
                     @endif
                         <th>@lang('quickadmin.results.fields.date')</th>
+                        <th>@lang('quickadmin.results.fields.topic')</th>
                         <th>Result</th>
                         <th>&nbsp;</th>
                     </tr>
@@ -29,7 +30,8 @@
                                 <td>{{ $result->user->name or '' }} ({{ $result->user->email or '' }})</td>
                             @endif
                                 <td>{{ $result->created_at or '' }}</td>
-                                <td>{{ $result->result }}/10</td>
+                                <td>{{ $result->topic->title }}</td>
+                                <td>{{ $result->result_over }}</td>
                                 <td>
                                     <a href="{{ route('results.show',[$result->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.view')</a>
                                 </td>

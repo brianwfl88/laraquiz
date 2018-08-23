@@ -10,13 +10,13 @@ use Illuminate\Database\Eloquent\Model;
  * @package App
  * @property string $question
  * @property string $option
- * @property tinyInteger $correct
+ * @property tinyInteger $points
 */
 class QuestionsOption extends Model
 {
     use SoftDeletes;
     
-    protected $fillable = ['option', 'correct', 'question_id'];
+    protected $fillable = ['option', 'points', 'question_id'];
     
     public static function boot()
     {

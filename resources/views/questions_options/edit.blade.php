@@ -37,6 +37,18 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 form-group">
+                    {!! Form::label('points', 'Points*', ['class' => 'control-label']) !!}
+                    {!! Form::number('points', old('points'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('points'))
+                        <p class="help-block">
+                            {{ $errors->first('points') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            {{-- <div class="row">
+                <div class="col-xs-12 form-group">
                     {!! Form::label('correct', 'Correct', ['class' => 'control-label']) !!}
                     {!! Form::hidden('correct', 0) !!}
                     {!! Form::checkbox('correct', 1, old('correct', 0), ['class' => 'form-control']) !!}
@@ -47,7 +59,7 @@
                         </p>
                     @endif
                 </div>
-            </div>
+            </div> --}}
             
         </div>
     </div>
