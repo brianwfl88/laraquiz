@@ -13,7 +13,7 @@
 			<div class="panel-body">
 				<div class="pull-right text-right">
 					Questions: {{ $topic->total_question }}<br />
-					Total Score: {{ $topic->hi_points }}
+					Highest Score: {{ $topic->highest_points }}
 				</div>
 				<h4>{{ $topic->title }}</h4>
 			</div>

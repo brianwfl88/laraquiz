@@ -18,7 +18,7 @@
                     <tr>
                         <th style="text-align:center;"><input type="checkbox" id="select-all" /></th>
                         <th>@lang('quickadmin.topics.fields.title')</th>
-                        <th>Max Points</th>
+                        <th>Highest Score</th>
                         <th>&nbsp;</th>
                     </tr>
                 </thead>
