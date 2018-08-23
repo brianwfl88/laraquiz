@@ -33,7 +33,7 @@
                             <input
                                 type="radio"
                                 name="answers[{{ $question->id }}]"
-                                value="{{ $option->id }}">
+                                value="{{ $option->id }}" required @if(old('answers.' . $question->id) == $option->id) checked @endif>
                             {{ $option->option }}
                         </label>
                     @endforeach
@@ -46,6 +46,10 @@
     @endif
     </div>
 
+    <div class="g-recaptcha" data-sitekey="{{ config('recaptcha.key') }}"></div>
+
+    <hr />
+
     {!! Form::submit(trans('quickadmin.submit_quiz'), ['class' => 'btn btn-danger']) !!}
     {!! Form::close() !!}
 @stop
@@ -55,6 +59,7 @@
     <script src="{{ url('quickadmin/js') }}/timepicker.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.4.5/jquery-ui-timepicker-addon.min.js"></script>
     <script src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script>
         $('.datetime').datetimepicker({
             autoclose: true,

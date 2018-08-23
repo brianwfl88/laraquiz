@@ -12,6 +12,8 @@ use App\QuestionsOption;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreTestRequest;
 
+use App\Rules\Recaptcha;
+
 class TestsController extends Controller
 {
     /**
@@ -59,7 +61,12 @@ class TestsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'g-recaptcha-response' => ['required', new Recaptcha]
+        ], ['g-recaptcha-response.required' => 'Please tick the Recaptcha']);
+
         $result = 0;
+        $topic_id = 0;
 
         $test = Test::create([
             'user_id' => Auth::id(),
@@ -67,7 +74,9 @@ class TestsController extends Controller
         ]);
 
         foreach ($request->input('questions', []) as $key => $question) {
-            $points = QuestionsOption::find($request->input('answers.' . $question))->points;
+            $question_option = QuestionsOption::with('question.topic')->find($request->input('answers.' . $question));
+            $points = $question_option->points;
+            $topic_id = $question_option->question->topic->id;
 
             $result += $points;
 
@@ -76,12 +85,12 @@ class TestsController extends Controller
                 'test_id'     => $test->id,
                 'question_id' => $question,
                 'option_id'   => $request->input('answers.'.$question),
-                'points'     => $points,
+                'points'     => $points
             ]);
         }
 
-        $test->update(['result' => $result]);
+        $test->update(['result' => $result, 'topic_id' => $topic_id]);
 
-        return redirect()->route('results.show', [$test->id]);
+        return redirect()->route('results.show', [$test->id])->withMessage(trans('quickadmin.quiz_completed'));
     }
 }

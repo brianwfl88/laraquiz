@@ -19,6 +19,10 @@
                         </tr>
                         @endif
                         <tr>
+                            <th>@lang('quickadmin.results.fields.topic')</th>
+                            <td>{{ $test->topic->title }}</td>
+                        </tr>
+                        <tr>
                             <th>@lang('quickadmin.results.fields.date')</th>
                             <td>{{ $test->created_at or '' }}</td>
                         </tr>
