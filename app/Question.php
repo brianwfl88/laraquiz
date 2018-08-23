@@ -45,4 +45,9 @@ class Question extends Model
     {
         return $this->hasMany(QuestionsOption::class, 'question_id')->withTrashed();
     }
+
+    public function getMaxPointAttribute()
+    {
+        return $this->options->max('points');
+    }
 }

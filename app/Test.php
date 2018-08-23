@@ -40,6 +40,6 @@ class Test extends Model
 
     public function getResultOverAttribute()
     {
-        return $this->result .'/'. $this->topic->max_points;
+        return $this->result .'/'. $this->topic->highest_points;
     }
 }
