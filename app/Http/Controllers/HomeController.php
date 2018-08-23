@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Question;
+use App\QuestionsOption;
 use App\Result;
 use App\Test;
 use App\User;
