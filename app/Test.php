@@ -4,6 +4,8 @@ namespace App;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
+use Auth;
+
 /**
  * Class Test
  *
@@ -36,6 +38,11 @@ class Test extends Model
     public function topic()
     {
         return $this->belongsTo(Topic::class);
+    }
+
+    public function getIsTakenAttribute()
+    {
+        return $this->user->id == Auth::user()->id;
     }
 
     public function getResultOverAttribute()

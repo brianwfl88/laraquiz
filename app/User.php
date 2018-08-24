@@ -51,6 +51,11 @@ class User extends Authenticatable
         $this->attributes['role_id'] = $input ? $input : null;
     }
 
+    public function tests()
+    {
+        return $this->hasMany(Test::class);
+    }
+
     public function role()
     {
         return $this->belongsTo(Role::class, 'role_id')->withTrashed();

@@ -33,6 +33,11 @@ class Topic extends Model
         return $this->hasManyThrough(QuestionsOption::class, Question::class);
     }
 
+    public function test()
+    {
+        return $this->hasOne(Test::class);
+    }
+
     public function getHighestPointsAttribute()
     {
         return $this->questions->sum('max_point');
@@ -41,5 +46,10 @@ class Topic extends Model
     public function getTotalQuestionAttribute()
     {
         return $this->questions()->count();
+    }
+
+    public function getIsTestTakenAttribute()
+    {
+        return $this->test && $this->test->is_taken;
     }
 }

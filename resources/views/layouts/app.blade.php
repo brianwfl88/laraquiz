@@ -36,6 +36,10 @@
                             <div class="note note-info">
                                 <p>{{ Session::get('message') }}</p>
                             </div>
+                        @elseif (Session::has('error_message'))
+                            <div class="note note-danger">
+                                <p>{{ Session::get('error_message') }}</p>
+                            </div>
                         @endif
                         @if ($errors->count() > 0)
                             <div class="note note-danger">

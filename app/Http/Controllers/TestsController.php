@@ -16,6 +16,10 @@ use App\Rules\Recaptcha;
 
 class TestsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('test_taken')->except('index');
+    }
     /**
      * Display a new test.
      *
