@@ -1,5 +1,5 @@
 <?php
 
 return [
-	'verify' => FALSE
+	'verify' => TRUE
 ];
