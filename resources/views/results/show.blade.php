@@ -93,7 +93,8 @@
     <style type="text/css">
     .progress {
         display: inline-block;
-        width: 600px;
+        width: 60%;
+        max-width: 400px;
         vertical-align: middle;
         margin-bottom: 0;
         margin-left: 15px;
