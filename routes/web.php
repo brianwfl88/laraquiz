@@ -24,6 +24,13 @@ $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('auth.password.email');
 $this->post('password/reset', 'Auth\ResetPasswordController@reset')->name('auth.password.reset');
 
+Route::get('/privacy-policy', function(){
+    return view('privacy_policy');
+});
+
+Route::get('/terms', function(){
+    return view('terms');
+});
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index');
