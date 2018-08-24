@@ -28,14 +28,20 @@
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.results.fields.result')</th>
-                            <td>{{ $test->result_over }}</td>
+                            <td>
+                                {{ $test->result_over }}
+
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                </div>
+                            </td>
                         </tr>
                     </table>
 
                     <?php $i = 1 ?>
                     @foreach($results as $result)
                         <table class="table table-bordered table-striped">
-                            <tr class="test-option{{ $result->correct ? '-true' : '-false' }}">
+                            <tr class="test-option">
                                 <th style="width: 10%">Question #{{ $i }}</th>
                                 <th>{{ $result->question->question_text or '' }}</th>
                             </tr>
@@ -84,4 +90,45 @@
             <a href="{{ route('results.index') }}" class="btn btn-default">See all my results</a>
         </div>
     </div>
-@stop
+    <style type="text/css">
+    .progress {
+        display: inline-block;
+        width: 600px;
+        vertical-align: middle;
+        margin-bottom: 0;
+        margin-left: 15px;
+    }
+
+    .progress-bar {
+        color: #424242;
+        transition: all .01s;
+    }
+    </style>
+@endsection
+
+@section('javascript')
+<script type="text/javascript">
+$(function(){
+
+    var percentage = '{{ $test->result_percentage }}' * 1;
+    var run = 0;
+
+    var start_progress = function(){
+        var bgColor = run < 24 ? 'red' : run < 49 ? 'orange' : run < 74 ? 'yellow' : 'green';
+
+        $('.progress-bar').attr({ 'aria-valuenow': run }).css({ 'width': run+'%', 'background-color': bgColor }).text(run + '%');
+
+        if(percentage > 0)
+        {
+            setTimeout(start_progress, 30);
+            percentage--;
+            run++;
+        }
+    };
+
+    start_progress();
+
+});
+</script>
+
+@endsection

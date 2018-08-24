@@ -42,4 +42,9 @@ class Test extends Model
     {
         return $this->result .'/'. $this->topic->highest_points;
     }
+
+    public function getResultPercentageAttribute()
+    {
+        return number_format($this->result / $this->topic->highest_points * 100, 0);
+    }
 }
