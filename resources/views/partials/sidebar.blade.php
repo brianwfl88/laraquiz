@@ -81,17 +81,6 @@
             </li>
         </ul>
 
-        <div class="text-center margin-top-20" style="color: white">
-            LaraQuiz is powered by
-            <br />
-            <a href="https://quickadminpanel.com" target="_blank">QuickAdminPanel.com</a>
-
-            <br /><br />
-
-            Feedback/questions?
-            <br />
-            <a href="mailto:info@laraveldaily.com" target="_blank">info@laraveldaily.com</a>
-        </div>
     </div>
 </div>
 {!! Form::open(['route' => 'auth.logout', 'style' => 'display:none;', 'id' => 'logout']) !!}
