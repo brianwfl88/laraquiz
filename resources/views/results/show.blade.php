@@ -98,6 +98,8 @@
         vertical-align: middle;
         margin-bottom: 0;
         margin-left: 15px;
+        background: #ccc;
+        border-radius: 3px !important;
     }
 
     .progress-bar {
