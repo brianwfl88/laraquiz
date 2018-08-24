@@ -83,10 +83,6 @@
                                         class="btn btn-info">
                                     Facebook
                                 </a>
-                                <a href="{{ route('oauth2github') }}"
-                                        class="btn btn-info">
-                                    GitHub
-                                </a>
                             </div>
                         </div>
                     </form>

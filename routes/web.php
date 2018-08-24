@@ -13,8 +13,6 @@ $this->get('oauth2google', 'Auth\Oauth2Controller@oauth2google')->name('oauth2go
 $this->get('googlecallback', 'Auth\Oauth2Controller@googlecallback')->name('googlecallback');
 $this->get('oauth2facebook', 'Auth\Oauth2Controller@oauth2facebook')->name('oauth2facebook');
 $this->get('facebookcallback', 'Auth\Oauth2Controller@facebookcallback')->name('facebookcallback');
-$this->get('oauth2github', 'Auth\Oauth2Controller@oauth2github')->name('oauth2github');
-$this->get('githubcallback', 'Auth\Oauth2Controller@githubcallback')->name('githubcallback');
 
 // Registration Routes...
 $this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('auth.register');
