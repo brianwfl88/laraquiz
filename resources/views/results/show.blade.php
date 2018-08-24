@@ -114,7 +114,7 @@ $(function(){
     var run = 0;
 
     var start_progress = function(){
-        var bgColor = run < 24 ? 'red' : run < 49 ? 'orange' : run < 74 ? 'yellow' : 'green';
+        var bgColor = run < 40 ? '#ff2300' : run < 65 ? '#fdaa11' : run < 85 ? '#e7ea02' : '#00ce00';
 
         $('.progress-bar').attr({ 'aria-valuenow': run }).css({ 'width': run+'%', 'background-color': bgColor }).text(run + '%');
 
